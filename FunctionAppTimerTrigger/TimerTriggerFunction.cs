@@ -9,17 +9,17 @@ using Microsoft.Extensions.Logging;
 
 namespace FunctionAppTimerTrigger
 {
-    public class Function1
+    public class TimerTriggerFunction
     {
         private readonly string _connectionString;
-        public Function1(IConfiguration configuration)
+        public TimerTriggerFunction(IConfiguration configuration)
         {
             _connectionString = configuration["ServiceBusConnectionString"];
         }
 
 
         //The function is configured to run every 1 minute
-        [FunctionName("Function1")]
+        [FunctionName("TimerTriggerFunction")]
         public void Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
